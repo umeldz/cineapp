@@ -32,7 +32,7 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@RequestMapping(value ="/search", method = RequestMethod.POST)
 	public String buscar(@RequestParam("fecha") String fecha, Model model){
 		
 		List<String> listaFechas = Utileria.getNextDays(4);

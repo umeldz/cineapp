@@ -11,6 +11,7 @@ public class Noticia {
 	private String estatus;
 	
 	public Noticia(){
+		
 		this.fecha = new Date();
 		this.estatus="Activa";
 	}
@@ -28,6 +29,7 @@ public class Noticia {
 	}
 
 	public void setTitulo(String titulo) {
+	
 		this.titulo = titulo;
 	}
 
@@ -44,6 +46,7 @@ public class Noticia {
 	}
 
 	public void setDetalle(String detalle) {
+	
 		this.detalle = detalle;
 	}
 
@@ -52,6 +55,7 @@ public class Noticia {
 	}
 
 	public void setEstatus(String estatus) {
+	
 		this.estatus = estatus;
 	}
 
