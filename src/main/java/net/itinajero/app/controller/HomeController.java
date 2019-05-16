@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import net.itinajero.app.model.Banner;
 import net.itinajero.app.model.Pelicula;
+import net.itinajero.app.service.IBannersService;
 import net.itinajero.app.service.INoticiasService;
 import net.itinajero.app.service.IPeliculasService;
 import net.itinajero.app.util.Utileria;
@@ -24,6 +26,11 @@ public class HomeController {
 	@Autowired
 	private IPeliculasService servicePeliculas;
 	
+	/*
+	 * Inyeccion clase de servicio banners
+	 */
+	@Autowired
+	private IBannersService serviceBanners;
 	
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 	
@@ -37,12 +44,15 @@ public class HomeController {
 		
 		List<String> listaFechas = Utileria.getNextDays(4);
 		
+		List<Banner> listaBanners = serviceBanners.buscarTodos();
+		
 		List<Pelicula> listaPeliculas = servicePeliculas.buscarTodas();
 		model.addAttribute("fechas", listaFechas);
 		model.addAttribute("fechaBusqueda", fecha);
 		model.addAttribute("peliculas",listaPeliculas);
+		model.addAttribute("banners", listaBanners); //Agregar al modelo la lista de banners
 		
-		System.out.println("Buscando todas las peliculas en exhibicion para le fecha " + fecha);
+		
 		return "home";
 	}
 	//@RequestMapping(value = "/detail/{id}/{fecha}",method=RequestMethod.GET)
@@ -67,6 +77,7 @@ public class HomeController {
 		
 		List<String> listaFechas = Utileria.getNextDays(4);
 		List<Pelicula> peliculas =servicePeliculas.buscarTodas();
+		List<Banner> listaBanners = serviceBanners.buscarTodos();
 		
 		// peliculas.add("Rapido y furioso");
 		// peliculas.add("El aro 2");
@@ -75,6 +86,8 @@ public class HomeController {
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("peliculas", peliculas);
 		model.addAttribute("fechas", listaFechas);
+		model.addAttribute("banners", listaBanners); //agregar la lista de banners al modelo
+		
 		return "home";
 	}
 

@@ -15,7 +15,7 @@ public class PeliculasServiceImpl implements IPeliculasService {
 
 	public PeliculasServiceImpl() {
 		
-		System.out.println("Creando una instancia de clase PeliculasServiceImpl");
+		//System.out.println("Creando una instancia de clase PeliculasServiceImpl");
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -107,6 +107,23 @@ public class PeliculasServiceImpl implements IPeliculasService {
 	@Override
 	public void insertar(Pelicula pelicula) {
 		lista.add(pelicula);
+	}
+
+	@Override
+	public List<String> buscarGeneros() {
+		//Nota : esta lista puede ser generada desde una base de datos
+		List<String> generos = new LinkedList<>();
+		generos.add("Accion");
+		generos.add("Aventura");
+		generos.add("Clasicas");
+		generos.add("Comedia romantica");
+		generos.add("Drama");
+		generos.add("Terror");
+		generos.add("Infantil");
+		generos.add("Accion y Aventura");
+		generos.add("Romantica");
+		
+		return generos;
 	}
 
 }
