@@ -11,7 +11,7 @@ public class NoticiaServiceImpl implements INoticiasService{
 	
 	// Constructor vacio. Unicamente para imprimir un mensaje al crearse una instancia
 	public NoticiaServiceImpl() {
-		System.out.println("Creando una instancia de la clase NoticiasServiceImpl");
+		//System.out.println("Creando una instancia de la clase NoticiasServiceImpl");
 	}
 	
 	@Override

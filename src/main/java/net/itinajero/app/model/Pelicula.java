@@ -17,7 +17,7 @@ public class Pelicula {
 	private Detalle detalle;
 	
 	public Pelicula(){
-		System.out.println("Constructor de Pelicula");
+		//System.out.println("Constructor de Pelicula");
 	}
 	
 	public Detalle getDetalle() {
