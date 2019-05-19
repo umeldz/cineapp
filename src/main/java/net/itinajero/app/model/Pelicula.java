@@ -2,15 +2,18 @@ package net.itinajero.app.model;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+//import javax.persistence.Transient;
 
 @Entity
 @Table(name="Peliculas")
@@ -31,6 +34,10 @@ public class Pelicula {
 	@OneToOne
 	@JoinColumn(name="idDetalle")
 	private Detalle detalle;
+	
+	@OneToMany(mappedBy="pelicula",fetch=FetchType.EAGER) //Atributo pelicula de la tabla horario
+	private List<Horario> horarios;
+	
 	
 	public Pelicula(){
 		//System.out.println("Constructor de Pelicula");
@@ -106,6 +113,15 @@ public class Pelicula {
 
 	public void setEstatus(String estatus) {
 		this.estatus = estatus;
+	}
+
+	
+	public List<Horario> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(List<Horario> horarios) {
+		this.horarios = horarios;
 	}
 
 	@Override
