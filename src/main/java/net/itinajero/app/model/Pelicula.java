@@ -3,8 +3,21 @@ package net.itinajero.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="Peliculas")
 public class Pelicula {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // auto_increment MySql
 	private int id;
 	private String titulo;
 	private int duracion=100;
@@ -14,6 +27,9 @@ public class Pelicula {
 	private Date fechaEstreno;
 	private String estatus = "Activa";
 
+	//@Transient    // ignorar este atributo durante la  persistencia  (Dejara el valor en null)
+	@OneToOne
+	@JoinColumn(name="idDetalle")
 	private Detalle detalle;
 	
 	public Pelicula(){
