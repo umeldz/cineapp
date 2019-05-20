@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import net.itinajero.app.model.Pelicula;
 
-@Service
+//@Service  comentar para que no sea marcada como un bean
 public class PeliculasServiceImpl implements IPeliculasService {
 
 	private List<Pelicula> lista = null;
@@ -124,6 +124,12 @@ public class PeliculasServiceImpl implements IPeliculasService {
 		generos.add("Romantica");
 		
 		return generos;
+	}
+
+	@Override
+	public void eliminar(int idPelicula) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

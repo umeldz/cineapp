@@ -2,7 +2,7 @@ package net.itinajero.app.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedList;
+//import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import net.itinajero.app.model.Banner;
 import net.itinajero.app.model.Pelicula;
 import net.itinajero.app.service.IBannersService;
-import net.itinajero.app.service.INoticiasService;
+//import net.itinajero.app.service.INoticiasService;
 import net.itinajero.app.service.IPeliculasService;
 import net.itinajero.app.util.Utileria;
 
@@ -59,9 +59,7 @@ public class HomeController {
 	@RequestMapping(value = "/detail",method=RequestMethod.GET)
 	//public String mostrarDetalle(Model model, @PathVariable("id") int idPelicula, @PathVariable("fecha") String fecha)
 	public String mostrarDetalle(Model model, @RequestParam("idMovie") int idPelicula, @RequestParam("fecha") String fecha) {
-		
-		System.out.println("Buscando Horarios para la pelicula " + idPelicula);
-		System.out.println("Para la fecha " + fecha);
+
 		
 		model.addAttribute("pelicula",servicePeliculas.buscarPorId(idPelicula));
 		
@@ -76,12 +74,12 @@ public class HomeController {
 	public String mostrarPrincipal(Model model) {
 		
 		List<String> listaFechas = Utileria.getNextDays(4);
+		
 		List<Pelicula> peliculas =servicePeliculas.buscarTodas();
+		
 		List<Banner> listaBanners = serviceBanners.buscarTodos();
 		
-		// peliculas.add("Rapido y furioso");
-		// peliculas.add("El aro 2");
-		// peliculas.add("Alien");
+
 		
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("peliculas", peliculas);
